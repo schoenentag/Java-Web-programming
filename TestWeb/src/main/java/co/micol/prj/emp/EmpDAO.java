@@ -75,6 +75,29 @@ public class EmpDAO extends DAO {
 	// 단건 조회
 	public EmpVO selectOne(String id) {
 		EmpVO vo = new EmpVO();
+		try {
+			getConnect();
+			String sql = "select * from employees where employee_id = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getEmployeeID());
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo.setEmployeeID(rs.getString("EMPLOYEE_ID"));
+				vo.setFirstName(rs.getString("FIRST_NAME"));
+				vo.setLastName(rs.getString("LAST_NAME"));
+				vo.setEmail(rs.getString("EMAIL"));
+				vo.setPhone(rs.getString("PHONE_NUMBER"));
+				vo.setHireDate(rs.getString("HIRE_DATE"));
+				vo.setJOB_ID(rs.getString("JOB_ID"));
+				vo.setSalary(rs.getString("SALARY"));
+				vo.setDepartmentsId(rs.getString("DEPARTMENT_ID"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
 		return vo;
 	}
 	
@@ -104,8 +127,25 @@ public class EmpDAO extends DAO {
 		}
 		return cnt;
 	}
-
 	// 수정
+	public int update(EmpVO vo) {
+		int r = 0;
+		try {
+			getConnect();
+			String sql = "update employees set FIRST_NAME = ? where EMPLOYEE_ID =?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getFirstName());
+			psmt.setString(2, vo.getEmployeeID());
+			r = psmt.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		
+		return r;
+	}
 	
 	// 삭제
 

@@ -13,7 +13,7 @@
 <a href="empInsert">사원등록</a><br> <!-- http://localhost/TestWeb/empInsert -->
 <form>
     <input name="departmentId">
-    <button>검색</button>
+    <button>부서번호 검색</button>
 </form>
 	<table>
 		<thead><tr><th>사번</th><th>이름</th><th>급여</th></tr></thead>

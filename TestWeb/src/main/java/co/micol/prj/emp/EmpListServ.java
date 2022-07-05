@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public class EmpListServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public EmpListServ() {
-		super();
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -24,10 +20,6 @@ public class EmpListServ extends HttpServlet {
 		request.setAttribute("list", dao.selectAll(id));
 		request.getRequestDispatcher("/WEB-INF/jsp/emp/empList.jsp").forward(request, response);
 	}
-		
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+	
 
 }

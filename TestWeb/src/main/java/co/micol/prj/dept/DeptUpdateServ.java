@@ -35,7 +35,6 @@ public class DeptUpdateServ extends HttpServlet {
 		String id = request.getParameter("departmentId"); // jsp의 name값을 읽기
 		String name =request.getParameter("departmentName");
 		
-		System.out.println(id);
 		DeptVO vo = new DeptVO();
 		vo.setDepartmentId(id);
 		vo.setDepartmentName(name);
