@@ -29,7 +29,7 @@ public class EmpUpdateServ extends HttpServlet {
 		String employeeID = request.getParameter("employeeID");
 		request.setAttribute("emp", empDAO.selectOne(employeeID));
 		
-		request.getRequestDispatcher("/WEB-INF/jsp/emp/empUpdate.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/emp/empUpdate2.jsp").forward(request, response);
 	}
 
 	// 수정페이지처리

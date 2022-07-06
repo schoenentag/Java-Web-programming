@@ -15,8 +15,6 @@ width: 15%;
 background-color: #04AA6D;
 text-align:center;
 }
-
-
 </style>
 <meta charset="UTF-8">
 <title>empInsert.jsp</title>

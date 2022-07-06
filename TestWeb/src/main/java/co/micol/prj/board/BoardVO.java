@@ -1,20 +1,20 @@
 package co.micol.prj.board;
 
-public class BoradVO {
+public class BoardVO {
 	private String id;
-	private String tilte;
+	private String title;
 	private String content;
 	private String writer;
 	private String rdt;
 	private String hit;
 	
-	public BoradVO() {
+	public BoardVO() {
 		super();
 	}
-	public BoradVO(String id, String tilte, String content, String writer, String rdt, String hit) {
+	public BoardVO(String id, String title, String content, String writer, String rdt, String hit) {
 		super();
 		this.id = id;
-		this.tilte = tilte;
+		this.title = title;
 		this.content = content;
 		this.writer = writer;
 		this.rdt = rdt;
@@ -26,11 +26,11 @@ public class BoradVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getTilte() {
-		return tilte;
+	public String getTitle() {
+		return title;
 	}
-	public void setTilte(String tilte) {
-		this.tilte = tilte;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContent() {
 		return content;

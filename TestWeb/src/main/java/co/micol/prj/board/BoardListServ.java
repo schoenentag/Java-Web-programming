@@ -12,7 +12,6 @@ public class BoardListServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		request.setAttribute("list", new BoardDAO().selectAll());
 		request.getRequestDispatcher("/WEB-INF/jsp/board/boardList.jsp").forward(request, response);
