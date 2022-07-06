@@ -56,7 +56,10 @@ public class EmpInsertServ extends HttpServlet {
 		EmpDAO empDAO = new EmpDAO();
 		int cnt = empDAO.insert(vo);
 		
-		response.getWriter().append(cnt+"건이 등록됨");
+		//response.getWriter().append(cnt+"건이 등록됨");
+		//request.getRequestDispatcher("EmpListServ").forward(request, response);
+		//처리끝나고 다시 list로 넘어가야할때는 sendRedirect 사용
+		response.sendRedirect("EmpListServ");
 	}
 	
 }

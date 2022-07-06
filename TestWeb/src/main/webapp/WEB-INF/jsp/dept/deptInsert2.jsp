@@ -1,4 +1,3 @@
-<%@page import="co.micol.prj.dept.DeptVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,12 +17,11 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
-<% DeptVO dept= (DeptVO) request.getAttribute("dept"); %>
-	<form name="frm" action="DeptUpdate" method="post"><!-- action =서블릿주소 -->
-		부서번호<input name="departmentId" value="<%= dept.getDepartmentId() %>">
-		부서명<input name="departmentName" value="<%= dept.getDepartmentName() %>">
+	<form name="frm" action="DeptInsert" method="get"><!-- action =서블릿주소 -->
+		부서번호<input name="departmentId">
+		부서명<input name="departmentName">
 		
-		<button type="button" onclick="validationForm()">부서수정</button>
+		<button type="button" onclick="validationForm()">부서등록</button>
 		
 
 	</form>

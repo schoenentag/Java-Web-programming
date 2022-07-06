@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>부서수정(JSTL대체)</title>
 <script>
     function validationForm(){
     	if(frm.departmentId.value==""){ /* 값입력이 안되었을 경우... */
@@ -16,6 +16,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 	<form name="frm" action="DeptInsert" method="get"><!-- action =서블릿주소 -->
 		부서번호<input name="departmentId">
 		부서명<input name="departmentName">

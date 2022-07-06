@@ -9,19 +9,20 @@
 <title>empList</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 <h3>사원목록</h3>
 <a href="empInsert">사원등록</a><br> <!-- http://localhost/TestWeb/empInsert -->
 <form>
     <input name="departmentId">
     <button>부서번호 검색</button>
 </form>
-	<table>
+	<table border="1">
 		<thead><tr><th>사번</th><th>이름</th><th>급여</th></tr></thead>
 		<tbody>
 		<c:forEach var="vo" items="${list}"> <%-- 주석 for() --%>
 			<tr>
 				<td>${vo.employeeID}</td>
-				<td>${vo.firstName}</td>
+				<td><a href="EmpUpdateServ?employeeID=${vo.employeeID}">${vo.firstName}</a></td>
 				<td>${vo.salary}</td> 
 			</tr>
 		</c:forEach>  

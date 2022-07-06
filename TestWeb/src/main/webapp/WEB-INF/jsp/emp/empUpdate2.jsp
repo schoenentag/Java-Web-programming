@@ -4,12 +4,11 @@
 <%@page import="co.micol.prj.emp.EmpVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사원 이름 수정(JSTL)</title>
+<title>사원 이름 수정</title>
 <style>
 form > label {
 display : inline-block;
@@ -31,44 +30,42 @@ function validationForm(){
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
-<%-- <% EmpVO vo = (EmpVO) request.getAttribute("emp"); %> --%>
-
-${emp}
+<% EmpVO vo = (EmpVO) request.getAttribute("emp"); %>
 <form  name="frm" action="DeptUpdate" id="empform" method="post" onsubmit="return validateForm()">
 	<label for="employeeID">사원번호*</label>
-	<input type="text" name="employeeID" readonly="readonly" value="${ emp.getEmployeeID() }"><br>
+	<input type="text" name="employeeID" readonly="readonly" value="<%=vo.getEmployeeID()%>"><br>
 	<label for="firstName">이름</label>
-	<input type="text" name="firstName" value="${ emp.getFirstName() }"><br>
+	<input type="text" name="firstName" value="<%=vo.getFirstName()%>"><br>
 	<label for="lastName">성*</label>
-	<input type="text" name="lastName" value="${ emp.getLastName() }"><br>
+	<input type="text" name="lastName" value="<%=vo.getLastName()%>"><br>
 	<label for="email">이메일*</label>
-	<input type="text" name="email" value="${ emp.getEmail() }"><br>
+	<input type="text" name="email" value="<%=vo.getEmail()%>"><br>
 	<label for="phone">핸드폰 번호</label>
-	<input type="text" name ="phone" value="${ emp.getPhone() }"><br>
+	<input type="text" name ="phone" value="<%=vo.getPhone()%>"><br>
 	<label for="hireDate">입사일*</label>
-	<input type="date" name="hireDate" value="${ emp.getHireDate().substring(0,10) }"><br>
+	<input type="date" name="hireDate" value="<%=vo.getHireDate().substring(0,10)%>"><br>
 	
 	<label for="jobId">직무*</label>
-	 
 	<select  name="jobId">
 	 <!-- FK키// 직무는 선택하도록 for문 돌림 --> <!-- request.setAttribute("jobs")의 값을 가져옴 -->
-	<c:forEach items="${ jobs }" var="job">
-	<option value="${ job.getJobId() }"> <%-- <% if(jobs.getJobId().equals(vo.getJOB_ID())){ %>selected="selected"<% } %> --%>
-	${ job.getJobTitle() } 
-	</c:forEach>
+	<% ArrayList<JobsVO> list = (ArrayList<JobsVO>)request.getAttribute("jobs");
+	for(JobsVO jobs : list) { %>
+	<option value="<%=jobs.getJobId() %>" <%-- <% if(jobs.getJobId().equals(vo.getJOB_ID())){ %>selected="selected"<% } %> --%>>
+	<%=jobs.getJobTitle()%> 
+	<% } %>
 	</select><br>
 	
 	<!-- radio for문 -->
 	<label for="departmentId">부서번호</label>
-	<c:forEach items="${depts }" var="dept">
-	<input type="radio" name="departmentId" value="${ dept.getDepartmentId() }" 
-	<c:if test="${dept.getDepartmentId() eq emp.getDepartmentsId()}">checked="checked"</c:if>>
-	${ dept.getDepartmentName()} 
-	</c:forEach>
+	<% ArrayList<DeptVO> dlist = (ArrayList<DeptVO>)request.getAttribute("depts");
+	for(DeptVO depts : dlist){ %>
+	<input type="radio" name="departmentId" value="<%=depts.getDepartmentId()%>" 
+	<% if(depts.getDepartmentId().equals(vo.getDepartmentsId())) { %>checked="checked"<% } %> >
+	<%= depts.getDepartmentName() %>
+	<% }%><br>
 	
-	<br>
 	<label for="salary">연봉</label>
-	<input type="text" name ="salary"  value="${ vo.getSalary() }"><br>
+	<input type="text" name ="salary"  value="<%=vo.getSalary()%>"><br>
 	<input type="submit" id="update" value="수정" ><br>
 	<button type="button" onclick="empDelete()">삭제</button>
 </form>
@@ -76,7 +73,7 @@ ${emp}
     function empDelete(){
     	location.href="EmpDeleteServ?employeeID=<%=vo.getEmployeeID()%>";
     }
-    document.getElementsByName("jobId")[0].value = "<%=emp.getJOB_ID()%>";
+    document.getElementsByName("jobId")[0].value = "<%=vo.getJOB_ID()%>";
     document.querySelector("[name=departmentId][value='<%=vo.getDepartmentsId()%>']").checked=true;
 
     </script>

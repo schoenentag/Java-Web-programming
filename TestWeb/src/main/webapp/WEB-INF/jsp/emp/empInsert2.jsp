@@ -3,10 +3,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
-<title>empInsert(JSTL)</title>
+<title>empInsert</title>
 <head>
 <style>
 form > label {
@@ -27,7 +26,7 @@ function validateForm(){
 		alert("사번을 입력하세요!");
 		frm.employeeID.focus();
 		return false;
-	}  */
+	} */
 	if(window.document.frm.lastName.value == ""){
 		alert("성을 입력하세요!");
 		frm.lastName.focus();
@@ -78,20 +77,20 @@ function validateForm(){
 	<input type="text" name ="phone" value="010-1111-1234"><br>
 	<label for="hireDate">입사일*</label>
 	<input type="date" name="hireDate" value="2022-07-05"><br>
-	
 	<label for="jobId">직무*</label>
 	<select  name="jobId">
-	<c:forEach items="${jobs}" var="job">
-	<option value="${ job.getJobId() }"> ${ job.getJobTitle() }
-	</c:forEach>
+	 <!-- FK키// 직무는 선택하도록 for문 돌림 --> <!-- request.setAttribute("jobs")의 값을 가져옴 -->
+	<% ArrayList<JobsVO> list = (ArrayList<JobsVO>)request.getAttribute("jobs");
+	for(JobsVO jobs : list) { %>
+	<option value="<%=jobs.getJobId() %>"><%=jobs.getJobTitle()%> 
+	<% } %>
 	</select><br>
-	
+	<!-- radio for문 -->
 	<label for="departmentId">부서번호</label>
-	<c:forEach items="${depts}" var="dept">
-	<input type="radio" name="departmentId" value="${dept.departmentId}">
-	${ dept.departmentName }
-	</c:forEach>
-	<br>
+	<% ArrayList<DeptVO> dlist = (ArrayList<DeptVO>)request.getAttribute("depts");
+	for(DeptVO depts : dlist){ %>
+	<input type="radio" name="departmentId" value="<%=depts.getDepartmentId()%>"><%= depts.getDepartmentName()%>
+	<% }%><br>
 	<label for="salary">연봉</label>
 	<input type="text" name ="salary"  value=""><br>
 	<input type="submit" id="insert" value="등록" ><br>
