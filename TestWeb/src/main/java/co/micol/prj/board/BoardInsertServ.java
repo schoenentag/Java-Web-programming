@@ -46,7 +46,7 @@ public class BoardInsertServ extends HttpServlet {
 		//화면에 등록완료 띄운 후 list로 돌아가도록 처리 (안뜨고있음...)
 		response.getWriter()
 		        .append("<script>")
-                .append("alert('"+cnt+"건 삭제완료');")
+                .append("alert('"+cnt+"건 등록완료');")
 		        .append("location.href='boardList';")
 		        .append("</script>");
 		

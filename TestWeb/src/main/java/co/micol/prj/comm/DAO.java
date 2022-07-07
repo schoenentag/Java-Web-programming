@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// 데이터 베이스 연결
+// 데이터 베이스 연결 
 public class DAO {
 	public Connection conn;
 	public PreparedStatement psmt;
@@ -22,10 +22,10 @@ public class DAO {
 	}
 
 	public void disconnect() {
-		// 인스턴스가 할당이 됐으면 연결 끊기
-		if (conn != null) {
+		// 인스턴스가 할당이 됐으면 연결 끊기 (연결시작한 순서 역방향으로 닫아야함 // 열기 : conn-> psmt->rs, 닫기: rs->psmt->conn)
+		if (rs != null) {
 			try {
-				conn.close();
+				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -37,9 +37,9 @@ public class DAO {
 				e.printStackTrace();
 			}
 		}
-		if (rs != null) {
+		if (conn != null) {
 			try {
-				rs.close();
+				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

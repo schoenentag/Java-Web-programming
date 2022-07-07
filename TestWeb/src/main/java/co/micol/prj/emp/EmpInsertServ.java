@@ -33,8 +33,8 @@ public class EmpInsertServ extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		//파라미터를 vo에 담기(주소값의 파라미터(getParameter) 값을 담기
-		String id = request.getParameter("employeeID");
-		String fName = request.getParameter("firstName");
+		//String id = request.getParameter("employeeID");
+		//String fName = request.getParameter("firstName");
 		String lName = request.getParameter("lastName");
 		String eml = request.getParameter("email");
 		String ph =  request.getParameter("phone");
@@ -43,8 +43,8 @@ public class EmpInsertServ extends HttpServlet {
 		String saly = request.getParameter("salary");
 		
 		EmpVO vo = new EmpVO(); // 넘겨받은 값을 EMPVO 타입으로 담기
-		vo.setEmployeeID(id);
-		vo.setFirstName(fName);
+		vo.setEmployeeID(request.getParameter("employeeID"));// 변수만들지 앟ㄴ고 바로 담을 수 있음
+		vo.setFirstName(request.getParameter("firstName"));
 		vo.setLastName(lName);
 		vo.setEmail(eml);
 		vo.setPhone(ph);

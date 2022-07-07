@@ -34,7 +34,7 @@ function validationForm(){
 <%-- <% EmpVO vo = (EmpVO) request.getAttribute("emp"); %> --%>
 
 ${emp}
-<form  name="frm" action="DeptUpdate" id="empform" method="post" onsubmit="return validateForm()">
+<form  name="frm" action="EmpUpdateServ" id="empform" method="post" onsubmit="return validateForm()">
 	<label for="employeeID">사원번호*</label>
 	<input type="text" name="employeeID" readonly="readonly" value="${ emp.getEmployeeID() }"><br>
 	<label for="firstName">이름</label>
@@ -62,7 +62,7 @@ ${emp}
 	<label for="departmentId">부서번호</label>
 	<c:forEach items="${depts }" var="dept">
 	<input type="radio" name="departmentId" value="${ dept.getDepartmentId() }" 
-	<c:if test="${dept.getDepartmentId() eq emp.getDepartmentsId()}">checked="checked"</c:if>>
+	<c:if test="${dept.getDepartmentId() == emp.getDepartmentsId()}">checked="checked"</c:if>>
 	${ dept.getDepartmentName()} 
 	</c:forEach>
 	
@@ -72,14 +72,14 @@ ${emp}
 	<input type="submit" id="update" value="수정" ><br>
 	<button type="button" onclick="empDelete()">삭제</button>
 </form>
-<script>
+<%-- <script>
     function empDelete(){
     	location.href="EmpDeleteServ?employeeID=<%=vo.getEmployeeID()%>";
     }
     document.getElementsByName("jobId")[0].value = "<%=emp.getJOB_ID()%>";
     document.querySelector("[name=departmentId][value='<%=vo.getDepartmentsId()%>']").checked=true;
 
-    </script>
+    </script> --%>
 
 </body>
 </html>

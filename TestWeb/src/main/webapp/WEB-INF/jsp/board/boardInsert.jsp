@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Board Insert</title>
-<!-- <script>
-document.getElementById('now_date').valueAsDate = new Date(); // 오늘 날짜로 등록하도록 하고싶음..
-</script>  -->
+<script>
+//document.getElementById('now_date').value = new Date(); // 오늘 날짜로 등록하도록 하고싶음..
+console.log(new Date());
+const parsedDate = Date.today().toString("MMMM dS, yyyy");
+//document.getElementById('now_date').valueAsDate = new Date(); // 오늘 날짜로 등록하도록 하고싶음..
+</script> 
 <style>
 form > label {
 margin: 2px;
@@ -32,7 +35,7 @@ text-align:center;
 	<label for="email">writer</label>
 	<input type="text" name="writer" value=""><br>
 	<label for="rdt">rdt</label>
-	<input type="date" name="rdt" value="2022-07-06" ><br>
+	<input type="date" id="now_date" name="rdt" value="2000-01-01" readonly="readonly" ><br>
 	
 	<!-- <label for="email">writer</label> 조회수는 자동생성되도록...--> 
 	<input type="submit" id="insert" value="등록">
