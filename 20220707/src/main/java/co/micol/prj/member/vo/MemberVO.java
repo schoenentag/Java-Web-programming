@@ -9,6 +9,6 @@ public class MemberVO {
 	private String memberID;
 	private String memberPassword;
 	private String memberName;
-	private String memberAutor;
+	private String memberAuthor;
 
 }
