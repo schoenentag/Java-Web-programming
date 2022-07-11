@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> <!-- DTD 정보 -->
+<tiles-definitions>
+<definition name="myapp.homepage" template="/WEB-INF/views/layouts/layout.jsp"> <!-- (전체)레이아웃 위치 -->
+    <put-attribute name="title" value="My homepage" /> <!-- 인터넷창 제목 -->
+    <put-attribute name="header" value="/WEB-INF/views/layouts/header.jsp" />
+    <put-attribute name="body" value="" />
+    <put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp" />
+  </definition>
+  
+<definition name="WILDCARD:*/*" extends="myapp.homepage">  <!-- WILDCARD:*/* : main/main 모양으로 들어온다면... -->
+    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+</definition>
+</tiles-definitions>
